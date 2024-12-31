@@ -1,22 +1,23 @@
 /* Button Style */
 .custom-button {
      padding: 12px 24px;
+
      background-color: #007bff;
      color: white;
      border: 7px solid transparent;
      border-radius: 9px;
      border-color: rgb(145, 89, 209);
-     font-size: 2rem;
+     font-size: 1.5rem;
      cursor: pointer;
 
      outline: none;
      height: 70px;
-     width:500px;
+     width:400px;
      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
    }
    .hello {
-     margin-top: 50px;
-     font-size: 100px;
+     margin-top: 10px;
+     font-size: 70px;
      color: #2a976f;
      text-align: center;
      text-shadow: 2px 2px 5px rgb(95, 176, 196); /* Adding a subtle shadow for better visibility */

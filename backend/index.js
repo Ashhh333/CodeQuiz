@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './db.js';
+import authRoutes from './routes/authRoutes.js';
 import problemRoutes from './routes/problemRoutes.js';
 
 // Initialize environment variables
@@ -16,6 +17,7 @@ connectDB();
 app.use(express.json());
 
 // Use routes
+app.use(authRoutes);
 app.use(problemRoutes);
 
 // Root route (optional)

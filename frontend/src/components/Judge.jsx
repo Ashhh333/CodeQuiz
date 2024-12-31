@@ -15,6 +15,7 @@ const Judge = () => {
     // Construct submissions dynamically
     const submissions = stdin.map((stdin, index) => ({
       language_id: selectedLanguage.id,
+      
       source_code: code64_bit,
       stdin,
       expected_output: expectedOutput[index]
@@ -61,8 +62,7 @@ const Judge = () => {
             break;
           }
         }
-
-        // Update results state and status
+         
         setResults(finalResults);
         setStatus("Judging completed!");
       } catch (error) {
@@ -93,10 +93,16 @@ const Judge = () => {
           {results.map((result, index) => (
             <div key={index} className={`test-case ${getStatusClass(result.status.description)}`}>
               <h3>Test Case {index + 1}:</h3>
-              <div style={{ display: "flex", flexDirection: "row", gap: "100px" }}>
+              <div style={{ display: "flex", flexDirection: "row", gap: "200px" }}>
                 <p><strong>Status:</strong> {result.status.description}</p>
-                {(result.status.description === "Wrong Answer" || result.status.description === "Compilation Error") && (
+                {(result.status.description === "Wrong Answer" ) && (
                   <p><strong>stdout:</strong> {atob(result.stdout) || "N/A"}</p>
+                  
+                )}
+                 
+                {(result.status.description === "Compilation Error" || result.status.description === "Runtime Error (NZEC)") && (
+                  <p><strong>Error:</strong> {atob(result.stderr) || "N/A"}</p>
+                  
                 )}
               </div>
             </div>

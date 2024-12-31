@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Login.module.css';
+import './Signup.css';
 
-const Login = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
     password: '',
   });
@@ -18,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -26,11 +27,12 @@ const Login = () => {
 
       const data = await response.json();
       if (response.ok) {
-        setMessage('Login successful!');
-        window.location.href = '/';
-        localStorage.setItem('token', data.token);
+        setMessage('Signup successful! Redirecting to Login page...');
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 1000);
       } else {
-        setMessage(data.error || 'Invalid credentials');
+        setMessage(data.error || 'Something went wrong');
       }
     } catch (error) {
       setMessage('Error connecting to the server.');
@@ -38,9 +40,18 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 style={{marginTop:'1px'}}>Login</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <div className="container">
+      <h2>Signup</h2>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          className="input"
+        />
         <input
           type="email"
           name="email"
@@ -48,7 +59,7 @@ const Login = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className={styles.input}
+          className="input"
         />
         <input
           type="password"
@@ -57,17 +68,22 @@ const Login = () => {
           value={formData.password}
           onChange={handleChange}
           required
-          className={styles.input}
+          className="input"
         />
-        <button type="submit" className={styles.button}>Login</button>
+        <button type="submit" className="button">Signup</button>
       </form>
-      {message && <p className={styles.message}>{message}</p>}
 
-      <p className={styles.link}>
-        Don't have an account? <Link to="/signup" className={styles.link}>Sign up</Link>
+      {message && (
+        <p className={`message ${message.includes('successful') ? 'success' : 'error'}`}>
+          {message}
+        </p>
+      )}
+
+      <p className="link">
+        Already have an account? <Link to="/login" className="link">Login</Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

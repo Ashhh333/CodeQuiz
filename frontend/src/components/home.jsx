@@ -13,7 +13,8 @@ const HomePage = () => {
         flexDirection: 'column',
         justifyContent: 'center', 
         alignItems: 'center',
-        gap: '50px', // Spacing between buttons
+        marginTop:'50px',
+        gap: '20px', // Spacing between buttons
         position: 'absolute',
         top: '40%', // Center the buttons vertically
         left: '50%', // Center the buttons horizontally

@@ -24,7 +24,8 @@ const LinkInputBox = () => {
   const handleSubmit = async () => {
     setError(null); // Reset any previous errors
     const problemId = extractIdFromLink(link);
-    localStorage.clear();
+    const code=localStorage.getItem("code");
+     localStorage.removeItem("code");
     if (!problemId) {
       setError('Invalid link. Please paste a valid link.');
       return;
@@ -47,8 +48,8 @@ const LinkInputBox = () => {
   };
 
   return (
-    <div style={{marginTop:'300px'}} className="container">
-      <h2 className="header">Problem Fetcher</h2>
+    <div style={{marginTop:'100px'}} className="container">
+      <h2 style={{fontSize:"40px",marginTop:"10px"}}>Problem Fetcher</h2>
       <div className="form-group">
         <label htmlFor="linkInput" className="label">Paste the question link:</label>
         <input

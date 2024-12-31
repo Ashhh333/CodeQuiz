@@ -3,6 +3,7 @@ import MonacoEditor from "@monaco-editor/react";
 import axios  from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import './codeeditor.css'
+import { languages } from "monaco-editor";
 const languageOptions = [
      { name: "C++", id: 54, editorLang: "cpp" },
      { name: "Python", id: 71, editorLang: "python" },
@@ -10,14 +11,22 @@ const languageOptions = [
      { name: "JavaScript", id: 63, editorLang: "javascript" },
      { name: "C", id: 50, editorLang: "c" },
    ];
+   const theme=[
+      "vs-dark",
+      "vs-light"
+   ]
    
    const CodeEditor = ({testCases}) => {
     const [code, setCode] = useState(() => {
       // Retrieve code from localStorage or set the default template
       return localStorage.getItem("code") || "// Write your code here...";
     });  
-     const [output, setOutput] = useState("");
-     const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0]); // Default to C++
+     const [Theme, setTheme] = useState("vs-dark");
+     const [selectedLanguage, setSelectedLanguage] = useState(() => {
+      const storedLanguage = localStorage.getItem("language");
+      return storedLanguage ? JSON.parse(storedLanguage) : languageOptions[0];
+    });
+      // Default to C++
      const navigate = useNavigate(); 
      const handleEditorChange = (value) => {
        setCode(value);
@@ -26,9 +35,15 @@ const languageOptions = [
    
      const handleLanguageChange = (e) => {
        const selected = languageOptions.find((lang) => lang.id === parseInt(e.target.value));
+       console.log(selected)
        setSelectedLanguage(selected);
        setCode("// Write your code here..."); // Reset code when changing language
+       localStorage.setItem("language",JSON.stringify(selected));
      };
+     const handlethemeChange=(e)=>{
+      console.log(e.target.value);
+       setTheme(e.target.value);
+     }
      const clearCode = () => {
       const defaultCode = "// Write your code here...";
       setCode(defaultCode);
@@ -61,8 +76,8 @@ const languageOptions = [
          <h2 className="header" >CodeQuiz</h2>
    
          {/* Language Selector */}
-         <div style={{ marginBottom: "10px" }}>
-           <label htmlFor="language-select" style={{ marginRight: "10px" ,fontSize:"30px" }}>Select Language:</label>
+         <div style={{ marginBottom: "6px" }}>
+           {/* <label htmlFor="language-select" style={{ marginRight: "10px" ,fontSize:"20px" }}>Select Language:</label> */}
            <select id="language-select" onChange={handleLanguageChange} value={selectedLanguage.id}>
              {languageOptions.map((lang) => (
                <option key={lang.id} value={lang.id}>
@@ -70,7 +85,14 @@ const languageOptions = [
                </option>
              ))}
            </select>
-           <button className="custombutton2" onClick={clearCode} style={{ marginTop: "10px" }}>
+           <select id="language-select" onChange={handlethemeChange} style={{marginLeft:"10px"}} >
+             {theme.map((theme,index) => (
+               <option key={index}>
+                 {theme}
+               </option>
+             ))}
+           </select>
+           <button className="custombutton-2" onClick={clearCode} style={{ marginTop: "-5px", position:"absolute" }}>
   Clear Code
 </button>
          </div>
@@ -81,10 +103,10 @@ const languageOptions = [
            height="70vh"
            width="100%"
            language={selectedLanguage.editorLang} // Change syntax highlighting
-           theme="vs-dark"
+           theme={Theme}
            value={code}
            onChange={handleEditorChange}
-           options={{ fontSize: 30, minimap: { enabled: false } }}
+           options={{ fontSize: 15, minimap: { enabled: false } }}
          />
    
          {/* Run Code Button */}

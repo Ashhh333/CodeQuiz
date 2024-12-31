@@ -1,73 +1,118 @@
-.header{
-     margin-top: 30px;
-     font-size: 50px;
-     color: #2a976f;
-     text-shadow: 2px 2px 5px rgb(95, 176, 196); /* Adding a subtle shadow for better visibility */
-     letter-spacing: 2px; /* Slight spacing between letters for a modern look */
-     font-family: 'Arial', sans-serif; /* Clean and modern font */
-     padding: 20px 0; /* Add some vertical padding for better spacing */
-     font-weight: bold; /* Make the font bolder for emphasis */
-   }
-   #language-select {
-     font-size: 20px; /* Increases the text size */
-     padding: 10px; /* Adds padding inside the dropdown */
-     height: 50px; /* Increases the height of the dropdown */
-     width: 200px; /* Adjusts the width of the dropdown */
-     border-radius: 5px; /* Adds rounded corners */
-     border: 1px solid #ccc; /* Adds a subtle border */
-     background-color: #0f0202; /* Light background for better appearance */
-     cursor: pointer; /* Pointer cursor on hover */
-   }
-   
+/* General Styles */
+.header {
+  margin-top: 1px; /* Reduced margin */
+  font-size: 40px; /* Reduced font size */
+  color: #2a976f;
+  text-shadow: 1px 1px 3px rgb(95, 176, 196); /* Subtle shadow for better visibility */
+  letter-spacing: 1.5px; /* Slightly reduced letter spacing */
+  font-family: 'Arial', sans-serif; /* Clean and modern font */
+  padding: 15px 0; /* Reduced vertical padding */
+  font-weight: bold; /* Emphasis */
+}
 
-   .custombutton:hover {
-     background-color: #0cb300;
-     transform: scale(1.1); /* Slightly scale the button */
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-     border-color: #0056b3; /* Change border color on hover */
-   }
-   
-   /* Button Focus Effect */
-   .custombutton:focus {
-     border-color: #ffcc00; /* Yellow border on focus */
-     outline: none; /* Remove default outline */
-   }
-   
-   /* Button Active State */
-   .custombutton:active {
-     transform: scale(0.98); /* Slightly shrink the button when clicked */
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a smaller shadow when clicked */
-   }
-   .custombutton {
-     padding: 12px 24px;
-     background-color: #00ff2a;
-     color: rgb(14, 13, 13);
-     border: 7px solid transparent;
-     border-radius: 9px;
-     border-color: rgb(89, 209, 129);
-     font-size: 1.8rem;
-     font-weight: 400;
-     cursor: pointer;
+#language-select {
+  font-size: 12px; /* Reduced text size */
+  padding: 5px; /* Reduced padding */
+  height: 30px; /* Reduced height */
+  width: 110px; /* Adjusted width */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #ccc; /* Subtle border */
+  background-color: #0f0202; /* Light background */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 10px;
+}
 
-     outline: none;
-     height: 80px;
-     width:200px;
-     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-   }
-   .custombutton2 {
+/* Buttons */
+.custombutton:hover {
+  background-color: #0cb300;
+  transform: scale(1.05); /* Slightly reduced scaling effect */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduced shadow intensity */
+  border-color: #0056b3; /* Change border color on hover */
+}
 
-     padding: 12px 12px;
-     background-color: #83b7eb;
-     color: rgb(14, 13, 13);
-     border: 4px solid transparent;
-     border-radius: 9px;
-     border-color: rgb(13, 15, 14);
-     font-size: 1.8rem;
-     font-weight: 400;
-     cursor: pointer;
-     margin-left: 26px;
-     outline: none;
-     height: 60px;
-     width:190px;
-     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-   }
+.custombutton:focus {
+  border-color: #ffcc00; /* Yellow border on focus */
+  outline: none; /* Remove default outline */
+}
+
+.custombutton:active {
+  transform: scale(0.97); /* Slightly shrink the button when clicked */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+}
+
+.custombutton {
+  padding: 10px 10px; /* Reduced padding */
+  background-color: #00ff2a;
+  color: rgb(14, 13, 13);
+  border: 5px solid transparent; /* Reduced border thickness */
+  border-radius: 7px; /* Slightly smaller radius */
+  border-color: rgb(89, 209, 129);
+  font-size: 1rem; /* Reduced font size */
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  height: 40px; /* Reduced height */
+  width: 110px; /* Reduced width */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.custombutton-2 {
+  padding: 10px 10px; /* Reduced padding */
+  background-color: #83b7eb;
+  color: rgb(14, 13, 13);
+  border: 3px solid transparent; /* Reduced border thickness */
+  border-radius: 7px; /* Slightly smaller radius */
+  border-color: rgb(13, 15, 14);
+  font-size: 1rem; /* Reduced font size */
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: 10px; /* Reduced margin */
+  outline: none;
+  height: 37px; /* Reduced height */
+  width: 110px; /* Reduced width */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header {
+    font-size: 30px; /* Smaller font for medium screens */
+    padding: 10px 0;
+    text-align: center; /* Center-align the header */
+  }
+
+  #language-select {
+    width: 100px; /* Adjust width */
+    font-size: 10px; /* Smaller font */
+    margin: 5px auto; /* Center the dropdown */
+  }
+
+  .custombutton,
+  .custombutton-2 {
+    width: 90px; /* Reduced width for medium screens */
+    height: 35px; /* Reduced height */
+    font-size: 0.9rem; /* Smaller font */
+    margin: 5px auto; /* Center the buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 24px; /* Even smaller font for small screens */
+    margin-top: 5px; /* Adjusted margin */
+    padding: 8px 0;
+  }
+
+  #language-select {
+    width: 90px; /* Adjust width */
+    font-size: 9px; /* Smaller font */
+    margin: 3px auto; /* Center the dropdown */
+  }
+
+  .custombutton,
+  .custombutton-2 {
+    width: 80px; /* Reduced width for small screens */
+    height: 30px; /* Reduced height */
+    font-size: 0.8rem; /* Smaller font */
+  }
+}
